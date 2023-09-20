@@ -35,7 +35,7 @@ try:
   print('____________NOTES____________')
   print("1. You will need to 1 time authenticate using DUO. Make sure you have your phone with you.")
   print("2. If the script crashes for any reason. Simply Restart It. It will work the next time, give it a few tries.")
-  print("3. In case of errror, document the error and report to the github repository @https://github.com/wimpywarlord.")
+  print("3. In case of errror, document the error and report to the github repository @https://github.com/wimpywarlord/appliFLY/issues")
   print("4. If you have already applied for a job, the script will skip it.")
 
   print('\n')
@@ -117,7 +117,9 @@ try:
       except NoSuchElementException:
           print("All jobs staged for application.")
           break
-
+      
+  wait_for_job_title_links = WebDriverWait(chromeDriver, 10)
+  wait_for_job_title_links.until(EC.presence_of_element_located((By.CLASS_NAME, "jobtitle")))
   job_title_links = chromeDriver.find_elements(By.CLASS_NAME, 'jobtitle')
 
   print("____________JOB LINKS FOUND____________");
@@ -321,11 +323,11 @@ try:
     time.sleep(2)
 
   print("Dᴇᴠᴇʟᴏᴘᴇᴅ Bʏ Kꜱʜɪᴛɪᴊ Dʜʏᴀɴɪ");
-  print("Thanks for using. If this helped, be sure to star the project on Github @https://github.com/wimpywarlord");
+  print("Thanks for using. If this helped, be sure to star the project on Github @https://github.com/wimpywarlord/appliFLY/issues");
 
   # Close the browser
   chromeDriver.quit()
 except Exception as e:
-    print("An error occured. Please document & report it to the developer @https://github.com/wimpywarlord")
+    print("An error occured. Please document & report it to the developer @https://github.com/wimpywarlord/appliFLY/issues")
     print(e)
     # Logs the error appropriately. 
