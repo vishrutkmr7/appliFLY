@@ -12,6 +12,7 @@ from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import NoSuchElementException
 
+from selenium.webdriver.chrome.options import Options
 
 try:
   # ! Make sure you have installed all the dependencies:
@@ -57,14 +58,21 @@ try:
   #  ? When we change jobDetails from the URL using siteid of some other job, it still loads up perfectly.
 
   # Create a new instance of the browser (make sure you have the appropriate driver installed)
-  chromeDriver = webdriver.Chrome()  # You can use other drivers like Firefox, Edge, etc.
+  # You can use other drivers like Firefox, Edge, etc.
+
+  # ____________ If Facing Jobs 0 Jobs found issue ________________
+  # Absolute Path to Chrome Driver Example: C:\Users\ASUS\Downloads\chrome\chrome.exe
+  # chromeDriver = webdriver.Chrome(executable_path=r"Absolute Path to the Chrome Driver")  # Uncomment this if facing 0 jobs found issue
+  # ____________ No Erros ____________________
+  chromeDriver = webdriver.Chrome()  # Comment this out if facing 0 jobs found issue
+  
   chromeDriver.maximize_window()
 
   # Navigate to the website
   employmentHomePageUrl = 'https://students.asu.edu/employment/search'
   chromeDriver.get(employmentHomePageUrl)
 
-  on_campus_job_button = chromeDriver.find_element(By.XPATH ,"/html/body/div[3]/div[2]/main[3]/div/div/div/div[2]/div/div/div/div/div[1]/div/div/div/div[1]/a/button")
+  on_campus_job_button = chromeDriver.find_element(By.XPATH ,"/html/body/div/div/main/div[2]/article/div[2]/div/div/div/div/div/div[4]/div/a[1]")
 
   on_campus_job_button.click()
 
